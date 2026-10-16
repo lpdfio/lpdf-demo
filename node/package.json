@@ -1,0 +1,12 @@
+{
+  "name": "lpdf-node-demo",
+  "version": "1.0.0",
+  "description": "Standalone demo for @lpdfio/lpdf — installs from npm and renders a PDF",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node demo.js"
+  },
+  "dependencies": {
+    "@lpdfio/lpdf": "latest"
+  }
+}

@@ -1,0 +1,9 @@
+.vscode
+examples/output.pdf
+bin/
+obj/
+node_modules/
+vendor/
+__pycache__/
+*.egg-info/
+.venv/
