@@ -1,0 +1,9 @@
+{
+  "name": "lpdfio/lpdf-php-demo",
+  "description": "Standalone demo for lpdfio/lpdf — installs from Packagist and renders a PDF",
+  "type": "project",
+  "require": {
+    "php": ">=8.2",
+    "lpdfio/lpdf": "*"
+  }
+}
