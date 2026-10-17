@@ -13,103 +13,103 @@
       <color name="rule"        value="#c8d6ee" />
     </colors>
   </tokens>
-  <document size="letter" margin="0pt">
+  <document size="letter">
     <meta title="Resume — Jane Doe" author="Jane Doe" />
-    <section margin="0pt 18pt 0pt 0pt">
-      <layout>
-        <split gap="0pt" height="full">
+    <section>
+      <layout margin="0pt 18pt 0pt 0pt">
+        <row gap="0pt" height="full">
 
           <!-- sidebar -->
-          <stack width="170pt" background="surface-alt" height="full">
-            <stack gap="l" padding="l">
+          <column width="170pt" background="surface-alt" height="full">
+            <column gap="l" padding="l">
 
               <!-- name -->
-              <stack gap="xs">
+              <column gap="xs">
                 <text font-size="xl" font="Helvetica-Bold" color="primary">Jane Doe</text>
                 <text font-size="s" color="text-muted">Senior Software Engineer</text>
-              </stack>
+              </column>
 
               <divider color="rule" thickness="xs" />
 
               <!-- contact -->
-              <stack gap="s">
+              <column gap="s">
                 <text font-size="s" font="Helvetica-Bold">Contact</text>
                 <text font-size="s" color="text-muted">jane@example.com</text>
                 <text font-size="s" color="text-muted">+1 555 000 1234</text>
                 <text font-size="s" color="text-muted">github.com/janedoe</text>
                 <text font-size="s" color="text-muted">San Francisco, CA</text>
-              </stack>
+              </column>
 
               <divider color="rule" thickness="xs" />
 
               <!-- skills -->
-              <stack gap="s">
+              <column gap="s">
                 <text font-size="s" font="Helvetica-Bold">Skills</text>
                 <text font-size="s" color="text-muted">Rust · WebAssembly</text>
                 <text font-size="s" color="text-muted">TypeScript · Node.js</text>
                 <text font-size="s" color="text-muted">PostgreSQL · Redis</text>
                 <text font-size="s" color="text-muted">Docker · Kubernetes</text>
-              </stack>
+              </column>
 
               <divider color="rule" thickness="xs" />
 
               <!-- education -->
-              <stack gap="s">
+              <column gap="s">
                 <text font-size="s" font="Helvetica-Bold">Education</text>
                 <text font-size="s" font="Helvetica-Bold">B.S. Computer Science</text>
                 <text font-size="s" color="text-muted">MIT, 2014</text>
-              </stack>
+              </column>
 
-            </stack>
-          </stack>
+            </column>
+          </column>
 
           <!-- main content -->
-          <stack padding="l" gap="l" height="fill">
+          <column width="fill" padding="l" gap="l" height="fill">
 
             <!-- profile -->
-            <stack gap="s">
+            <column gap="s">
               <text font-size="l" font="Helvetica-Bold">Profile</text>
               <divider color="primary" thickness="xs" />
               <text font-size="m">Software engineer with 10 years of experience building high-performance distributed systems. Specialising in Rust, WebAssembly, and developer tooling. Proven track record of leading cross-functional teams and shipping products used by millions of people worldwide.</text>
-            </stack>
+            </column>
 
             <!-- experience -->
-            <stack gap="m">
+            <column gap="m">
               <text font-size="l" font="Helvetica-Bold">Experience</text>
               <divider color="primary" thickness="xs" />
 
               <!-- job 1 -->
-              <stack gap="xs">
-                <flank gap="m" align="center" end="true">
-                  <text font-size="m" font="Helvetica-Bold">Staff Engineer — Acme Corp</text>
+              <column gap="xs">
+                <row gap="m" align="center">
+                  <text width="fill" font-size="m" font="Helvetica-Bold">Staff Engineer — Acme Corp</text>
                   <text font-size="s" color="text-muted">2021 – Present</text>
-                </flank>
+                </row>
                 <text font-size="s" color="text-muted">Led architecture of a real-time data pipeline processing 50 million events per day. Reduced p99 latency by 40% through custom memory allocators and lock-free queues written in Rust.</text>
-              </stack>
+              </column>
 
               <!-- job 2 -->
-              <stack gap="xs">
-                <flank gap="m" align="center" end="true">
-                  <text font-size="m" font="Helvetica-Bold">Senior Engineer — Bright Labs</text>
+              <column gap="xs">
+                <row gap="m" align="center">
+                  <text width="fill" font-size="m" font="Helvetica-Bold">Senior Engineer — Bright Labs</text>
                   <text font-size="s" color="text-muted">2017 – 2021</text>
-                </flank>
+                </row>
                 <text font-size="s" color="text-muted">Built and maintained a multi-tenant SaaS platform serving 8,000 customers. Migrated a monolithic Rails application to microservices, cutting deployment time from 45 minutes to under 3 minutes.</text>
-              </stack>
+              </column>
 
               <!-- job 3 -->
-              <stack gap="xs">
-                <flank gap="m" align="center" end="true">
-                  <text font-size="m" font="Helvetica-Bold">Software Engineer — Orion Systems</text>
+              <column gap="xs">
+                <row gap="m" align="center">
+                  <text width="fill" font-size="m" font="Helvetica-Bold">Software Engineer — Orion Systems</text>
                   <text font-size="s" color="text-muted">2014 – 2017</text>
-                </flank>
+                </row>
                 <text font-size="s" color="text-muted">Developed embedded firmware for IoT sensors in C and Rust. Delivered SDK integrations for AWS IoT and Azure IoT Hub adopted by three enterprise clients in the first year of release.</text>
-              </stack>
+              </column>
 
-            </stack>
+            </column>
 
-          </stack>
+          </column>
 
-        </split>
+        </row>
       </layout>
     </section>
   </document>

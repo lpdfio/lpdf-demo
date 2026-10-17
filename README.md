@@ -1,6 +1,6 @@
 # lpdf demos
 
-Minimal demos for the lpdf adapters — each renders an XML document, or a document built with the Kit API, to a PDF file using the lpdf engine.
+Minimal demos for the lpdf adapters — each renders an XML document, or a document built with the `L` builder, to a PDF file using the lpdf engine.
 
 | Language | Package | Demo |
 |---|---|---|
@@ -13,7 +13,11 @@ Each folder's README shows how to run that demo locally or with Docker.
 
 ## Examples
 
-[`examples/`](examples/) holds three XML documents and the PDFs they render to. Every demo uses them, and writes the Kit API's sample to `examples/output.pdf` when run without arguments.
+[`examples/`](examples/) holds three XML documents and the PDFs they render to. Every demo uses them, and writes the builder's sample to `examples/output.pdf` when run without arguments.
+
+## SDK versions
+
+Each demo is pinned to the one SDK version it was written for, `0.27.0`, in its `package.json`, `composer.json`, `requirements.txt` or `.csproj`. A later release can change the API, so the pins move with the release.
 
 ## Docker
 
@@ -26,7 +30,7 @@ docker run --rm -v "./examples:/examples" lpdf-node-demo /examples/example1.xml 
 
 ## License key
 
-Every demo passes an empty license key, which enables the free tier (output includes a watermark). Pass a valid key to remove it.
+No demo sets a license key, which enables the free tier (output includes a watermark). Set a valid key on the engine to remove it.
 
 ## Learn more
 

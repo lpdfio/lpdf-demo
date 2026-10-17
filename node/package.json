@@ -7,6 +7,6 @@
     "start": "node demo.js"
   },
   "dependencies": {
-    "@lpdfio/lpdf": "latest"
+    "@lpdfio/lpdf": "0.27.0"
   }
 }

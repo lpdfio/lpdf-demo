@@ -10,7 +10,7 @@ Minimal demo for the [Lpdfio.Lpdf](https://www.nuget.org/packages/Lpdfio.Lpdf) a
 
 ```bash
 cd dotnet
-dotnet run                                                            # builds a sample document with the Kit API → ../examples/output.pdf
+dotnet run                                                            # builds a sample document with the L builder → ../examples/output.pdf
 
 dotnet run -- ../examples/example1.xml ../examples/example1.pdf
 dotnet run -- ../examples/example2.xml ../examples/example2.pdf
@@ -30,7 +30,7 @@ docker build -f dotnet/Dockerfile -t lpdf-dotnet-demo .
 # open an interactive terminal inside the container
 docker run --rm -it lpdf-dotnet-demo /bin/sh
 
-# run with the Kit API — PDF lands in /examples/output.pdf inside the container
+# run with the L builder — PDF lands in /examples/output.pdf inside the container
 docker run --rm lpdf-dotnet-demo
 
 # run a built-in example — PDF is written inside the container and lost on exit
@@ -47,15 +47,15 @@ docker run --rm -v "./examples:/examples" lpdf-dotnet-demo /examples/example3.xm
 
 ## What it does
 
-1. Describes the document structure programmatically using the Kit, or using XML
-2. Passes the document structure to `LpdfEngine.RenderPdf()`
+1. Describes the document structure programmatically with the `L` builder, or using XML
+2. Passes the document structure to `PdfEngine.Render()`
 3. Writes the resulting PDF bytes to the output path
 
 The engine uses an embedded WASI binary via the [Wasmtime](https://www.nuget.org/packages/Wasmtime) NuGet package — no native tooling required.
 
 ## License key
 
-An empty string `""` is used as the license key, which enables the free tier (output includes a watermark). Pass a valid key to remove it.
+No license key is set, which enables the free tier (output includes a watermark). Pass a valid key to `SetLicenseKey()` to remove it.
 
 ## Learn more
 
