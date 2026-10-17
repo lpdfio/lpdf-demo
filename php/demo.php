@@ -20,18 +20,17 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-use Lpdf\LpdfEngine;
-use Lpdf\LpdfKit;
-use Lpdf\LpdfLayout;
-use Lpdf\Kit\DocumentOptions;
-use Lpdf\Kit\SectionOptions;
-use Lpdf\Layout\StackOptions;
-use Lpdf\Layout\TextOptions;
-use Lpdf\Layout\SpanOptions;
+use Lpdf\L;
+use Lpdf\Kit\DocumentAttr;
+use Lpdf\Kit\LayoutAttr;
+use Lpdf\Layout\ColumnAttr;
+use Lpdf\Layout\SpanAttr;
+use Lpdf\Layout\TextAttr;
+use const Lpdf\NoAttr;
 
 // Arg contract:
-//   php demo.php                      → Kit API → ../examples/output.pdf
-//   php demo.php output.pdf            → Kit API → output.pdf
+//   php demo.php                      → L builder → ../examples/output.pdf
+//   php demo.php output.pdf            → L builder → output.pdf
 //   php demo.php input.xml output.pdf  → render XML → output.pdf
 
 if (isset($argv[2])) {
@@ -40,52 +39,45 @@ if (isset($argv[2])) {
     $outputPath = $argv[1] ?? __DIR__ . '/../examples/output.pdf';
 }
 
-// empty key → free tier (watermark)
-$engine = new LpdfEngine('');
+// no key → free tier (watermark)
+$engine = L::engine();
 
 if (isset($argv[2])) {
     // Render caller-supplied XML file.
     $xml = file_get_contents($argv[1]);
-    $pdf = $engine->renderPdf($xml);
+    $pdf = $engine->render($xml);
 } else {
-    // No XML supplied — build a sample document with the Kit API.
+    // No XML supplied — build a sample document with the L builder.
     $generated = (new DateTimeImmutable('now', new DateTimeZone('UTC')))->format('Y-m-d H:i') . ' UTC';
 
-    $doc = LpdfKit::document(
-        sections: [
-            LpdfKit::section(
-                nodes: [
-                    LpdfKit::layout([
-                        LpdfLayout::stack([
-                            LpdfLayout::text(['lpdf PHP demo'],
-                                new TextOptions(fontSize: '28pt', bold: 'true', color: '#1a1a2e')),
+    $doc = L::document(new DocumentAttr(size: 'letter'), [
+        L::section(NoAttr, [
+            L::layout(new LayoutAttr(margin: '40pt'), [
+                L::column(new ColumnAttr(gap: '16pt'), [
+                    L::text(new TextAttr(fontSize: '28pt', bold: 'true', color: '#1a1a2e'), ['lpdf PHP demo']),
 
-                            LpdfLayout::divider(),
+                    L::divider(),
 
-                            LpdfLayout::text(['This PDF was generated programmatically using the LpdfKit builder API — no XML file required.']),
+                    L::text(NoAttr, ['This PDF was generated programmatically using the L builder API — no XML file required.']),
 
-                            LpdfLayout::stack([
-                                LpdfLayout::text(['Key facts'], new TextOptions(bold: 'true')),
-                                LpdfLayout::text(['• Engine: lpdfio/lpdf (WASI / wasmtime)']),
-                                LpdfLayout::text(['• License: free tier — watermark visible']),
-                                LpdfLayout::text(["• Generated: $generated"]),
-                            ], new StackOptions(background: '#f0f4ff', padding: '16pt', gap: '6pt')),
-
-                            LpdfLayout::text([
-                                'Pass ',
-                                LpdfLayout::span(['path/to/doc.xml'], new SpanOptions(bold: true)),
-                                ' as the first argument to render your own XML document.',
-                            ]),
-                        ], new StackOptions(gap: '16pt')),
+                    L::column(new ColumnAttr(background: '#f0f4ff', padding: '16pt', gap: '6pt'), [
+                        L::text(new TextAttr(bold: 'true'), ['Key facts']),
+                        L::text(NoAttr, ['• Engine: lpdfio/lpdf (WASI / wasmtime)']),
+                        L::text(NoAttr, ['• License: free tier — watermark visible']),
+                        L::text(NoAttr, ["• Generated: $generated"]),
                     ]),
-                ],
-                options: new SectionOptions(size: 'letter', margin: '40pt'),
-            ),
-        ],
-        options: new DocumentOptions(),
-    );
 
-    $pdf = $engine->renderPdf($doc);
+                    L::text(NoAttr, [
+                        'Pass ',
+                        L::span(new SpanAttr(bold: 'true'), ['path/to/doc.xml']),
+                        ' as the first argument to render your own XML document.',
+                    ]),
+                ]),
+            ]),
+        ]),
+    ]);
+
+    $pdf = $engine->render($doc);
 }
 
 file_put_contents($outputPath, $pdf);

@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Lpdfio.Lpdf" Version="*" />
+    <PackageReference Include="Lpdfio.Lpdf" Version="0.27.0" />
   </ItemGroup>
 
   <ItemGroup>

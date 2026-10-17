@@ -19,18 +19,18 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from lpdf import (
-    Pdf,
+    L,
     NoAttr,
     DocumentAttr,
-    SectionAttr,
-    StackAttr,
+    LayoutAttr,
+    ColumnAttr,
     TextAttr,
     SpanAttr,
 )
 
 # Arg contract:
-#   python demo.py                      → Kit API → ../examples/output.pdf
-#   python demo.py output.pdf            → Kit API → output.pdf
+#   python demo.py                      → L builder → ../examples/output.pdf
+#   python demo.py output.pdf            → L builder → output.pdf
 #   python demo.py input.xml output.pdf  → render XML → output.pdf
 
 if len(sys.argv) > 2:
@@ -41,53 +41,47 @@ else:
     output_path = Path(__file__).resolve().parent.parent / "examples" / "output.pdf"
 
 # no key → free tier (watermark)
-engine = Pdf.engine()
+engine = L.engine()
 
 if len(sys.argv) > 2:
     # Render caller-supplied XML file.
     pdf = engine.render(Path(sys.argv[1]).read_text(encoding="utf-8"))
 else:
-    # No XML supplied — build a sample document with the Kit API.
+    # No XML supplied — build a sample document with the L builder.
     generated = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M") + " UTC"
 
-    doc = Pdf.document(
-        NoAttr,
-        sections=[
-            Pdf.section(
-                SectionAttr(size="letter", margin="40pt"),
-                nodes=[
-                    Pdf.layout(NoAttr, [
-                        Pdf.stack(StackAttr(gap="16pt"), [
-                            Pdf.text(
-                                ["lpdf Python demo"],
-                                TextAttr(font_size="28pt", bold="true", color="#1a1a2e"),
-                            ),
+    doc = L.document(DocumentAttr(size="letter"), [
+        L.section(NoAttr, [
+            L.layout(LayoutAttr(margin="40pt"), [
+                L.column(ColumnAttr(gap="16pt"), [
+                    L.text(
+                        TextAttr(font_size="28pt", bold="true", color="#1a1a2e"),
+                        ["lpdf Python demo"],
+                    ),
 
-                            Pdf.divider(),
+                    L.divider(),
 
-                            Pdf.text(["This PDF was generated programmatically using the Pdf builder API — no XML file required."]),
+                    L.text(NoAttr, ["This PDF was generated programmatically using the L builder API — no XML file required."]),
 
-                            Pdf.stack(
-                                StackAttr(background="#f0f4ff", padding="16pt", gap="6pt"),
-                                [
-                                    Pdf.text(["Key facts"], TextAttr(bold="true")),
-                                    Pdf.text(["• Engine: lpdfio-lpdf (WASI / wasmtime)"]),
-                                    Pdf.text(["• License: free tier — watermark visible"]),
-                                    Pdf.text([f"• Generated: {generated}"]),
-                                ],
-                            ),
+                    L.column(
+                        ColumnAttr(background="#f0f4ff", padding="16pt", gap="6pt"),
+                        [
+                            L.text(TextAttr(bold="true"), ["Key facts"]),
+                            L.text(NoAttr, ["• Engine: lpdfio-lpdf (WASI / wasmtime)"]),
+                            L.text(NoAttr, ["• License: free tier — watermark visible"]),
+                            L.text(NoAttr, [f"• Generated: {generated}"]),
+                        ],
+                    ),
 
-                            Pdf.text([
-                                "Pass ",
-                                Pdf.span(["path/to/doc.xml"], SpanAttr(bold="true")),
-                                " as the first argument to render your own XML document.",
-                            ]),
-                        ]),
+                    L.text(NoAttr, [
+                        "Pass ",
+                        L.span(SpanAttr(bold="true"), ["path/to/doc.xml"]),
+                        " as the first argument to render your own XML document.",
                     ]),
-                ],
-            ),
-        ],
-    )
+                ]),
+            ]),
+        ]),
+    ])
 
     pdf = engine.render(doc)
 

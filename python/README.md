@@ -14,7 +14,7 @@ Minimal demo for the [lpdfio-lpdf](https://pypi.org/project/lpdfio-lpdf/) adapte
 ```bash
 cd python
 pip install -r requirements.txt
-python demo.py                                                        # builds a sample document with the Kit API → ../examples/output.pdf
+python demo.py                                                        # builds a sample document with the L builder → ../examples/output.pdf
 
 python demo.py ../examples/example1.xml ../examples/example1.pdf
 python demo.py ../examples/example2.xml ../examples/example2.pdf
@@ -43,7 +43,7 @@ docker build -f python/Dockerfile -t lpdf-python-demo .
 # open an interactive terminal inside the container
 docker run --rm -it lpdf-python-demo /bin/sh
 
-# run with the Kit API — PDF lands in /examples/output.pdf inside the container
+# run with the L builder — PDF lands in /examples/output.pdf inside the container
 docker run --rm lpdf-python-demo
 
 # run a built-in example — PDF is written inside the container and lost on exit
@@ -60,15 +60,15 @@ docker run --rm -v "./examples:/examples" lpdf-python-demo /examples/example3.xm
 
 ## What it does
 
-1. Describes the document structure programmatically using the Kit, or using XML
-2. Passes the document structure to `LpdfEngine.render_pdf()`
+1. Describes the document structure programmatically with the `L` builder, or using XML
+2. Passes the document structure to `PdfEngine.render()`
 3. Writes the resulting PDF bytes to the output path
 
 The engine shells out to a wasmtime process running the lpdf WASI binary — no C extensions required.
 
 ## License key
 
-An empty string `""` is used as the license key, which enables the free tier (output includes a watermark). Pass a valid key to remove it.
+No license key is set, which enables the free tier (output includes a watermark). Pass a valid key to `set_license_key()` to remove it.
 
 ## Learn more
 

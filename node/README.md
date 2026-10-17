@@ -11,7 +11,7 @@ Minimal demo for the [@lpdfio/lpdf](https://www.npmjs.com/package/@lpdfio/lpdf) 
 ```bash
 cd node
 npm install
-node demo.js                                                          # builds a sample document with the Kit API → ../examples/output.pdf
+node demo.js                                                          # builds a sample document with the L builder → ../examples/output.pdf
 
 node demo.js ../examples/example1.xml ../examples/example1.pdf
 node demo.js ../examples/example2.xml ../examples/example2.pdf
@@ -31,7 +31,7 @@ docker build -f node/Dockerfile -t lpdf-node-demo .
 # open an interactive terminal inside the container
 docker run --rm -it lpdf-node-demo /bin/sh
 
-# run with the Kit API — PDF lands in /examples/output.pdf inside the container
+# run with the L builder — PDF lands in /examples/output.pdf inside the container
 docker run --rm lpdf-node-demo
 
 # run a built-in example — PDF is written inside the container and lost on exit
@@ -48,15 +48,15 @@ docker run --rm -v "./examples:/examples" lpdf-node-demo /examples/example3.xml 
 
 ## What it does
 
-1. Describes the document structure programmatically using the Kit, or using XML
-2. Passes the document structure to `LpdfEngine.renderPdf()`
+1. Describes the document structure programmatically with the `L` builder, or using XML
+2. Passes the document structure to `PdfEngine.render()`
 3. Writes the resulting PDF bytes to the output path
 
 The engine runs an embedded WASM binary — no native dependencies, no external services.
 
 ## License key
 
-An empty string `''` is used as the license key, which enables the free tier (output includes a watermark). Pass a valid key to remove it.
+No license key is set, which enables the free tier (output includes a watermark). Pass a valid key to `setLicenseKey()` to remove it.
 
 ## Learn more
 
