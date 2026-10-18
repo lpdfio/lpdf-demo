@@ -1,0 +1,43 @@
+name: CI
+run-name: "${{ format('CI (render the demos): {0}', github.event_name == 'pull_request' && github.event.pull_request.title || github.event.head_commit.message) }}"
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  render:
+    name: Render ${{ matrix.demo }}
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+    strategy:
+      fail-fast: false
+      matrix:
+        demo: [dotnet, node, php, python]
+    steps:
+      - uses: actions/checkout@v5
+
+      # Builds the demo's image as its README does and renders the examples and the demo's own sample with it.
+      # Each demo is pinned to one SDK version, so this is what shows a pull request that moves the pin, Dependabot's
+      # or a person's, whether the demo still works with it.
+      - name: Render the examples
+        run: bash .github/render-demo.sh ${{ matrix.demo }}
+
+  # The one check to require, whatever the matrix holds: the matrix jobs are named after the demos.
+  demos:
+    name: Demos
+    needs: render
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Every demo rendered
+        env:
+          RESULT: ${{ needs.render.result }}
+        run: |
+          if [ "$RESULT" != success ]; then
+            echo "::error::the demos did not all render ($RESULT)"
+            exit 1
+          fi
