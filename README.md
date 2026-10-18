@@ -17,7 +17,7 @@ Each folder's README shows how to run that demo locally or with Docker.
 
 ## SDK versions
 
-Each demo is pinned to the one SDK version it was written for, `0.27.0`, in its `package.json`, `composer.json`, `requirements.txt` or `.csproj`. A later release can change the API, so the pins move with the release.
+Each demo is pinned to the one SDK version it was written for in its `package.json`, `composer.json`, `requirements.txt` or `.csproj`: `0.27.0`, except Python's `0.27.1`, since the 0.27.0 package on PyPI doesn't include the engine. A later release can change the API, so the pins move with the release.
 
 ## Docker
 
