@@ -17,7 +17,7 @@ Each folder's README shows how to run that demo locally or with Docker.
 
 ## SDK versions
 
-Each demo is pinned to the one SDK version it was written for in its `package.json`, `composer.json`, `requirements.txt` or `.csproj`: `0.27.0`, except Python's `0.27.1`, since the 0.27.0 package on PyPI doesn't include the engine. A later release can change the API, so the pins move with the release.
+Each demo is pinned to the one SDK version it was written for, in its `package.json`, `composer.json`, `requirements.txt` or `.csproj`. A later release can change the API, so a pin moves when the demo has been checked against the new version: Dependabot opens a pull request for a demo when its package has a new version, and CI renders the demo with it.
 
 ## Docker
 
@@ -27,6 +27,8 @@ The images copy `examples/`, so build them from the repo root:
 docker build -f node/Dockerfile -t lpdf-node-demo .
 docker run --rm -v "./examples:/examples" lpdf-node-demo /examples/example1.xml /examples/example1.pdf
 ```
+
+CI builds each image and renders the examples with it on every pull request. `.github/render-demo.sh <node|php|python|dotnet>` does the same locally, from the repo root.
 
 ## License key
 
