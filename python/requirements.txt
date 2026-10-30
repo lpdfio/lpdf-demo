@@ -1,1 +1,1 @@
-lpdfio-lpdf==0.27.1
+lpdfio-lpdf==0.29.0
