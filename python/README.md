@@ -4,7 +4,7 @@ Minimal demo for the [lpdfio-lpdf](https://pypi.org/project/lpdfio-lpdf/) adapte
 
 ## Requirements
 
-- Python 3.8+
+- Python 3.11+
 - [wasmtime](https://wasmtime.dev) on `$PATH`
 
 > The Docker path below handles all dependencies automatically.
