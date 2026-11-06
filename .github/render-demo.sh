@@ -5,10 +5,10 @@
 # error, and when what it wrote is not a PDF.
 #
 # Run from the repo root, as the CI does:
-#   .github/render-demo.sh <node|php|python|dotnet>
+#   .github/render-demo.sh <node|php|python|dotnet|java>
 set -euo pipefail
 
-demo=${1:?usage: render-demo.sh <node|php|python|dotnet>}
+demo=${1:?usage: render-demo.sh <node|php|python|dotnet|java>}
 if [ ! -f "$demo/Dockerfile" ]; then
     echo "::error::there is no demo called '$demo'"
     exit 2

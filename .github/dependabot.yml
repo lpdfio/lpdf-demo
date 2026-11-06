@@ -3,7 +3,7 @@
 # passes moves the pin, and one that fails is the cue for changing the demo to the new API. Merging stays with the
 # maintainers, so a pin moves when someone chose it to.
 #
-# The four SDKs are versioned apart (the Python package had a patch the others did not), which is why there is a
+# The five SDKs are versioned apart (the Python package had a patch the others did not), which is why there is a
 # pull request for each demo and not one for the release. A version is proposed 3 days after it is published, so a
 # release that is replaced by a fix at once is not proposed twice.
 version: 2
@@ -31,6 +31,13 @@ updates:
 
   - package-ecosystem: nuget
     directory: /dotnet
+    schedule:
+      interval: daily
+    cooldown:
+      default-days: 3
+
+  - package-ecosystem: maven
+    directory: /java
     schedule:
       interval: daily
     cooldown:
