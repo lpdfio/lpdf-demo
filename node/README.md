@@ -29,7 +29,7 @@ No local Node.js installation required. Run these commands from the repo root: t
 docker build -f node/Dockerfile -t lpdf-node-demo .
 
 # open an interactive terminal inside the container
-docker run --rm -it lpdf-node-demo /bin/sh
+docker run --rm -it --entrypoint /bin/sh lpdf-node-demo
 
 # run with the L builder — PDF lands in /examples/output.pdf inside the container
 docker run --rm lpdf-node-demo

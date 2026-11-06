@@ -43,7 +43,7 @@ No local Python or pip installation required. Run these commands from the repo r
 docker build -f python/Dockerfile -t lpdf-python-demo .
 
 # open an interactive terminal inside the container
-docker run --rm -it lpdf-python-demo /bin/sh
+docker run --rm -it --entrypoint /bin/sh lpdf-python-demo
 
 # run with the L builder — PDF lands in /examples/output.pdf inside the container
 docker run --rm lpdf-python-demo
