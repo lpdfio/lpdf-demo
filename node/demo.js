@@ -44,14 +44,14 @@ const { L, NoAttr } = require('@lpdfio/lpdf');
       L.section(NoAttr, [
         L.layout({ margin: '40pt' }, [
           L.column({ gap: '16pt' }, [
-            L.text({ fontSize: '28pt', bold: 'true', color: '#1a1a2e' }, ['lpdf Node.js demo']),
+            L.text({ fontSize: '28pt', bold: true, color: '#1a1a2e' }, ['lpdf Node.js demo']),
 
             L.divider(),
 
             L.text(NoAttr, ['This PDF was generated programmatically using the L builder API — no XML file required.']),
 
             L.column({ background: '#f0f4ff', padding: '16pt', gap: '6pt' }, [
-              L.text({ bold: 'true' }, ['Key facts']),
+              L.text({ bold: true }, ['Key facts']),
               L.text(NoAttr, ['• Engine: @lpdfio/lpdf (WASM / Node.js)']),
               L.text(NoAttr, ['• License: free tier — watermark visible']),
               L.text(NoAttr, [`• Generated: ${now} UTC`]),
@@ -59,7 +59,7 @@ const { L, NoAttr } = require('@lpdfio/lpdf');
 
             L.text(NoAttr, [
               'Pass ',
-              L.span({ bold: 'true' }, ['path/to/doc.xml']),
+              L.span({ bold: true }, ['path/to/doc.xml']),
               ' as the first argument to render your own XML document.',
             ]),
           ]),

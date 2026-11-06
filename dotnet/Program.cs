@@ -29,7 +29,7 @@ if (args.Length > 0)
 {
     // Render caller-supplied XML file.
     var xml = await File.ReadAllTextAsync(args[0]);
-    bytes = await engine.Render(xml);
+    bytes = engine.Render(xml);
 }
 else
 {
@@ -38,14 +38,14 @@ else
         L.Section(L.NoAttr, [
             L.Layout(new() { Margin = "40pt" }, [
                 L.Column(new() { Gap = "16pt" }, [
-                    L.Text(new() { FontSize = "28pt", Bold = "true", Color = "#1a1a2e" }, [L.Raw("lpdf .NET demo")]),
+                    L.Text(new() { FontSize = "28pt", Bold = true, Color = "#1a1a2e" }, [L.Raw("lpdf .NET demo")]),
 
                     L.Divider(),
 
                     L.Text(L.NoAttr, [L.Raw("This PDF was generated programmatically using the L builder API — no XML file required.")]),
 
                     L.Column(new() { Background = "#f0f4ff", Padding = "16pt", Gap = "6pt" }, [
-                        L.Text(new() { Bold = "true" }, [L.Raw("Key facts")]),
+                        L.Text(new() { Bold = true }, [L.Raw("Key facts")]),
                         L.Text(L.NoAttr, [L.Raw("• Engine: Lpdfio.Lpdf (WASI / Wasmtime)")]),
                         L.Text(L.NoAttr, [L.Raw("• License: free tier — watermark visible")]),
                         L.Text(L.NoAttr, [L.Raw($"• Generated: {DateTime.UtcNow:yyyy-MM-dd HH:mm} UTC")]),
@@ -53,7 +53,7 @@ else
 
                     L.Text(L.NoAttr, [
                         L.Raw("Pass "),
-                        L.Span(new() { Bold = "true" }, ["path/to/doc.xml"]),
+                        L.Span(new() { Bold = true }, ["path/to/doc.xml"]),
                         L.Raw(" as the first argument to render your own XML document."),
                     ]),
                 ]),
@@ -61,7 +61,7 @@ else
         ]),
     ]);
 
-    bytes = await engine.Render(doc);
+    bytes = engine.Render(doc);
 }
 
 await File.WriteAllBytesAsync(outputPath, bytes);
