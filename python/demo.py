@@ -55,7 +55,7 @@ else:
             L.layout(LayoutAttr(margin="40pt"), [
                 L.column(ColumnAttr(gap="16pt"), [
                     L.text(
-                        TextAttr(font_size="28pt", bold="true", color="#1a1a2e"),
+                        TextAttr(font_size="28pt", bold=True, color="#1a1a2e"),
                         ["lpdf Python demo"],
                     ),
 
@@ -66,7 +66,7 @@ else:
                     L.column(
                         ColumnAttr(background="#f0f4ff", padding="16pt", gap="6pt"),
                         [
-                            L.text(TextAttr(bold="true"), ["Key facts"]),
+                            L.text(TextAttr(bold=True), ["Key facts"]),
                             L.text(NoAttr, ["• Engine: lpdfio-lpdf (WASI / wasmtime)"]),
                             L.text(NoAttr, ["• License: free tier — watermark visible"]),
                             L.text(NoAttr, [f"• Generated: {generated}"]),
@@ -75,7 +75,7 @@ else:
 
                     L.text(NoAttr, [
                         "Pass ",
-                        L.span(SpanAttr(bold="true"), ["path/to/doc.xml"]),
+                        L.span(SpanAttr(bold=True), ["path/to/doc.xml"]),
                         " as the first argument to render your own XML document.",
                     ]),
                 ]),

@@ -1,11 +1,5 @@
 FROM python:3.12-slim
 
-# Install wasmtime — required by the lpdfio-lpdf package to run the WASI binary
-RUN apt-get update && apt-get install -y --no-install-recommends curl xz-utils \
-    && curl -sSf https://wasmtime.dev/install.sh | bash \
-    && mv /root/.wasmtime/bin/wasmtime /usr/local/bin/wasmtime \
-    && apt-get clean && rm -rf /var/lib/apt/lists/*
-
 WORKDIR /demo
 
 COPY python/requirements.txt ./
