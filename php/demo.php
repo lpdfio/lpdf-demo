@@ -54,14 +54,14 @@ if (isset($argv[2])) {
         L::section(NoAttr, [
             L::layout(new LayoutAttr(margin: '40pt'), [
                 L::column(new ColumnAttr(gap: '16pt'), [
-                    L::text(new TextAttr(fontSize: '28pt', bold: 'true', color: '#1a1a2e'), ['lpdf PHP demo']),
+                    L::text(new TextAttr(fontSize: '28pt', bold: true, color: '#1a1a2e'), ['lpdf PHP demo']),
 
                     L::divider(),
 
                     L::text(NoAttr, ['This PDF was generated programmatically using the L builder API — no XML file required.']),
 
                     L::column(new ColumnAttr(background: '#f0f4ff', padding: '16pt', gap: '6pt'), [
-                        L::text(new TextAttr(bold: 'true'), ['Key facts']),
+                        L::text(new TextAttr(bold: true), ['Key facts']),
                         L::text(NoAttr, ['• Engine: lpdfio/lpdf (WASI / wasmtime)']),
                         L::text(NoAttr, ['• License: free tier — watermark visible']),
                         L::text(NoAttr, ["• Generated: $generated"]),
@@ -69,7 +69,7 @@ if (isset($argv[2])) {
 
                     L::text(NoAttr, [
                         'Pass ',
-                        L::span(new SpanAttr(bold: 'true'), ['path/to/doc.xml']),
+                        L::span(new SpanAttr(bold: true), ['path/to/doc.xml']),
                         ' as the first argument to render your own XML document.',
                     ]),
                 ]),
