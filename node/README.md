@@ -4,7 +4,7 @@ Minimal demo for the [@lpdfio/lpdf](https://www.npmjs.com/package/@lpdfio/lpdf) 
 
 ## Requirements
 
-- Node.js 18+
+- Node.js 20+
 
 ## Run locally
 
