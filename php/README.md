@@ -33,7 +33,7 @@ No local PHP, Composer, or wasmtime installation required. Run these commands fr
 docker build -f php/Dockerfile -t lpdf-php-demo .
 
 # open an interactive terminal inside the container
-docker run --rm -it lpdf-php-demo /bin/sh
+docker run --rm -it --entrypoint /bin/sh lpdf-php-demo
 
 # run with the L builder — PDF lands in /examples/output.pdf inside the container
 docker run --rm lpdf-php-demo

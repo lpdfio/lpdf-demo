@@ -28,7 +28,7 @@ No local .NET installation required. Run these commands from the repo root: the 
 docker build -f dotnet/Dockerfile -t lpdf-dotnet-demo .
 
 # open an interactive terminal inside the container
-docker run --rm -it lpdf-dotnet-demo /bin/sh
+docker run --rm -it --entrypoint /bin/sh lpdf-dotnet-demo
 
 # run with the L builder — PDF lands in /examples/output.pdf inside the container
 docker run --rm lpdf-dotnet-demo
