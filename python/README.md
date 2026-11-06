@@ -5,7 +5,9 @@ Minimal demo for the [lpdfio-lpdf](https://pypi.org/project/lpdfio-lpdf/) adapte
 ## Requirements
 
 - Python 3.11+
-- [wasmtime](https://wasmtime.dev) on `$PATH`
+- A platform the [`wasmtime`](https://pypi.org/project/wasmtime/) package has wheels for: Linux (x86_64, aarch64; glibc and musl), macOS (x86_64, arm64) or Windows (x64, arm64)
+
+`pip install` is the whole setup: pip installs the `wasmtime` package with the SDK, and there is no program to install or put on `PATH`.
 
 > The Docker path below handles all dependencies automatically.
 
@@ -34,7 +36,7 @@ python demo.py
 
 ## Run with Docker
 
-No local Python, pip, or wasmtime installation required. Run these commands from the repo root: the image copies the shared `examples/` folder.
+No local Python or pip installation required. Run these commands from the repo root: the image copies the shared `examples/` folder.
 
 ```bash
 # build the image
@@ -64,7 +66,7 @@ docker run --rm -v "./examples:/examples" lpdf-python-demo /examples/example3.xm
 2. Passes the document structure to `PdfEngine.render()`
 3. Writes the resulting PDF bytes to the output path
 
-The engine shells out to a wasmtime process running the lpdf WASI binary — no C extensions required.
+The engine runs inside Python on the [`wasmtime`](https://pypi.org/project/wasmtime/) package, which pip installs with the SDK: no separate process and no program on `PATH`.
 
 ## License key
 
