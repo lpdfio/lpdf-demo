@@ -4,11 +4,11 @@ Minimal demos for the lpdf adapters — each renders an XML document, or a docum
 
 | Language | Package | Demo |
 |---|---|---|
-| .NET | [Lpdfio.Lpdf](https://www.nuget.org/packages/Lpdfio.Lpdf) | [dotnet/](dotnet/) |
-| Java | [io.lpdf:lpdf](https://central.sonatype.com/artifact/io.lpdf/lpdf) | [java/](java/) |
-| Node.js | [@lpdfio/lpdf](https://www.npmjs.com/package/@lpdfio/lpdf) | [node/](node/) |
-| PHP | [lpdfio/lpdf](https://packagist.org/packages/lpdfio/lpdf) | [php/](php/) |
+| JavaScript | [@lpdfio/lpdf](https://www.npmjs.com/package/@lpdfio/lpdf) | [node/](node/) |
 | Python | [lpdfio-lpdf](https://pypi.org/project/lpdfio-lpdf/) | [python/](python/) |
+| Java | [io.lpdf:lpdf](https://central.sonatype.com/artifact/io.lpdf/lpdf) | [java/](java/) |
+| C# | [Lpdfio.Lpdf](https://www.nuget.org/packages/Lpdfio.Lpdf) | [dotnet/](dotnet/) |
+| PHP | [lpdfio/lpdf](https://packagist.org/packages/lpdfio/lpdf) | [php/](php/) |
 
 Each folder's README shows how to run that demo locally or with Docker.
 
