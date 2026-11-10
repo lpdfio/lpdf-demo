@@ -19,7 +19,7 @@
         <dependency>
             <groupId>io.lpdf</groupId>
             <artifactId>lpdf</artifactId>
-            <version>0.33.0</version>
+            <version>0.34.0</version>
         </dependency>
     </dependencies>
 
