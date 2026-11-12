@@ -1,13 +1,10 @@
-# lpdf Python demo
+# Lpdf Python demo
 
-Minimal demo for the [lpdfio-lpdf](https://pypi.org/project/lpdfio-lpdf/) adapter — renders an XML document to a PDF file using the lpdf engine.
+A Python program that renders an XML document, or a document built in code, to a PDF file with [`lpdfio-lpdf`](https://pypi.org/project/lpdfio-lpdf/).
 
 ## Requirements
 
-- Python 3.11+
-- A platform the [`wasmtime`](https://pypi.org/project/wasmtime/) package has wheels for: Linux (x86_64, aarch64; glibc and musl), macOS (x86_64, arm64) or Windows (x64, arm64)
-
-`pip install` is the whole setup: pip installs the `wasmtime` package with the SDK, and there is no program to install or put on `PATH`.
+- Python 3.11 or later, on Linux (x86_64 or aarch64, glibc or musl), macOS (x86_64 or arm64) or Windows (x64 or arm64)
 
 > The Docker path below handles all dependencies automatically.
 
@@ -62,18 +59,12 @@ docker run --rm -v "./examples:/examples" lpdf-python-demo /examples/example3.xm
 
 ## What it does
 
-1. Describes the document structure programmatically with the `L` builder, or using XML
-2. Passes the document structure to `PdfEngine.render()`
-3. Writes the resulting PDF bytes to the output path
+1. Builds the document in code with `L`, or reads it from an XML file
+2. Renders it with `engine.render()`
+3. Writes the PDF to the output path
 
-The engine runs inside Python on the [`wasmtime`](https://pypi.org/project/wasmtime/) package, which pip installs with the SDK: no separate process and no program on `PATH`.
+## Docs
 
-## License key
-
-No license key is set, which enables the free tier (output includes a watermark). Pass a valid key to `set_license_key()` to remove it.
-
-## Learn more
-
-- [lpdf documentation](https://lpdf.io/docs)
-- [XML schema reference](https://lpdf.io/schema/lpdf.xsd)
+- [lpdf.io/docs](https://lpdf.io/docs/)
+- [XML schema](https://lpdf.io/schema/lpdf.xsd)
 - [lpdfio-lpdf on PyPI](https://pypi.org/project/lpdfio-lpdf/)

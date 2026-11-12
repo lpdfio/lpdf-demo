@@ -1,6 +1,6 @@
-# lpdf .NET demo
+# Lpdf .NET demo
 
-Minimal demo for the [Lpdfio.Lpdf](https://www.nuget.org/packages/Lpdfio.Lpdf) adapter — renders an XML document to a PDF file using the lpdf engine.
+A .NET program that renders an XML document, or a document built in code, to a PDF file with [`Lpdfio.Lpdf`](https://www.nuget.org/packages/Lpdfio.Lpdf).
 
 ## Requirements
 
@@ -47,18 +47,12 @@ docker run --rm -v "./examples:/examples" lpdf-dotnet-demo /examples/example3.xm
 
 ## What it does
 
-1. Describes the document structure programmatically with the `L` builder, or using XML
-2. Passes the document structure to `PdfEngine.Render()`
-3. Writes the resulting PDF bytes to the output path
+1. Builds the document in code with `L`, or reads it from an XML file
+2. Renders it with `engine.Render()`
+3. Writes the PDF to the output path
 
-The engine uses an embedded WASI binary via the [Wasmtime](https://www.nuget.org/packages/Wasmtime) NuGet package — no native tooling required.
+## Docs
 
-## License key
-
-No license key is set, which enables the free tier (output includes a watermark). Pass a valid key to `SetLicenseKey()` to remove it.
-
-## Learn more
-
-- [lpdf documentation](https://lpdf.io/docs)
-- [XML schema reference](https://lpdf.io/schema/lpdf.xsd)
+- [lpdf.io/docs](https://lpdf.io/docs/)
+- [XML schema](https://lpdf.io/schema/lpdf.xsd)
 - [Lpdfio.Lpdf on NuGet](https://www.nuget.org/packages/Lpdfio.Lpdf)

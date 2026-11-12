@@ -39,7 +39,6 @@ if (isset($argv[2])) {
     $outputPath = $argv[1] ?? __DIR__ . '/../examples/output.pdf';
 }
 
-// no key → free tier (watermark)
 $engine = L::engine();
 
 if (isset($argv[2])) {
@@ -63,7 +62,6 @@ if (isset($argv[2])) {
                     L::column(new ColumnAttr(background: '#f0f4ff', padding: '16pt', gap: '6pt'), [
                         L::text(new TextAttr(bold: true), ['Key facts']),
                         L::text(NoAttr, ['• Engine: lpdfio/lpdf (WASI / wasmtime)']),
-                        L::text(NoAttr, ['• License: free tier — watermark visible']),
                         L::text(NoAttr, ["• Generated: $generated"]),
                     ]),
 

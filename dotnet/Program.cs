@@ -20,7 +20,6 @@ while (!File.Exists(Path.Combine(projectDir, "LpdfDemo.csproj")) && Directory.Ge
 
 var outputPath = args.Length > 1 ? args[1] : Path.GetFullPath(Path.Combine(projectDir, "..", "examples", "output.pdf"));
 
-// no key → free tier (watermark)
 var engine = L.Engine();
 
 byte[] bytes;
@@ -47,7 +46,6 @@ else
                     L.Column(new() { Background = "#f0f4ff", Padding = "16pt", Gap = "6pt" }, [
                         L.Text(new() { Bold = true }, [L.Raw("Key facts")]),
                         L.Text(L.NoAttr, [L.Raw("• Engine: Lpdfio.Lpdf (WASI / Wasmtime)")]),
-                        L.Text(L.NoAttr, [L.Raw("• License: free tier — watermark visible")]),
                         L.Text(L.NoAttr, [L.Raw($"• Generated: {DateTime.UtcNow:yyyy-MM-dd HH:mm} UTC")]),
                     ]),
 

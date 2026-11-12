@@ -40,7 +40,6 @@ elif len(sys.argv) > 1:
 else:
     output_path = Path(__file__).resolve().parent.parent / "examples" / "output.pdf"
 
-# no key → free tier (watermark)
 engine = L.engine()
 
 if len(sys.argv) > 2:
@@ -68,7 +67,6 @@ else:
                         [
                             L.text(TextAttr(bold=True), ["Key facts"]),
                             L.text(NoAttr, ["• Engine: lpdfio-lpdf (WASI / wasmtime)"]),
-                            L.text(NoAttr, ["• License: free tier — watermark visible"]),
                             L.text(NoAttr, [f"• Generated: {generated}"]),
                         ],
                     ),
