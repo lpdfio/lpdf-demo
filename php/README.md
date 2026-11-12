@@ -6,7 +6,7 @@ A PHP program that renders an XML document, or a document built in code, to a PD
 
 - PHP 8.2 or later, with the DOM extension
 - Composer
-- One of the two ways the SDK runs the engine: its native library through PHP's FFI extension, on Linux with glibc 2.17 or newer on x86_64 or arm64, or [`wasmtime`](https://wasmtime.dev) on `PATH` ([requirements of `lpdfio/lpdf`](https://github.com/lpdfio/lpdf-php#requirements)). The Docker image uses `wasmtime`.
+- [`wasmtime`](https://wasmtime.dev) on `PATH`
 
 > The Docker path below handles all dependencies automatically.
 
