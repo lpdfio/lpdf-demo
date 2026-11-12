@@ -1,12 +1,12 @@
-# lpdf PHP demo
+# Lpdf PHP demo
 
-Minimal demo for the [lpdfio/lpdf](https://packagist.org/packages/lpdfio/lpdf) adapter — renders an XML document to a PDF file using the lpdf engine.
+A PHP program that renders an XML document, or a document built in code, to a PDF file with [`lpdfio/lpdf`](https://packagist.org/packages/lpdfio/lpdf).
 
 ## Requirements
 
-- PHP 8.2+
+- PHP 8.2 or later, with the DOM extension
 - Composer
-- [wasmtime](https://wasmtime.dev) on `$PATH`
+- One of the two ways the SDK runs the engine: its native library through PHP's FFI extension, on Linux with glibc 2.17 or newer on x86_64 or arm64, or [`wasmtime`](https://wasmtime.dev) on `PATH` ([requirements of `lpdfio/lpdf`](https://github.com/lpdfio/lpdf-php#requirements)). The Docker image uses `wasmtime`.
 
 > The Docker path below handles all dependencies automatically.
 
@@ -52,18 +52,12 @@ docker run --rm -v "./examples:/examples" lpdf-php-demo /examples/example3.xml /
 
 ## What it does
 
-1. Describes the document structure programmatically with the `L` builder, or using XML
-2. Passes the document structure to `PdfEngine->render()`
-3. Writes the resulting PDF bytes to the output path
+1. Builds the document in code with `L`, or reads it from an XML file
+2. Renders it with `$engine->render()`
+3. Writes the PDF to the output path
 
-The engine shells out to a wasmtime process running the lpdf WASI binary — no PHP extensions required.
+## Docs
 
-## License key
-
-No license key is set, which enables the free tier (output includes a watermark). Pass a valid key to `setLicenseKey()` to remove it.
-
-## Learn more
-
-- [lpdf documentation](https://lpdf.io/docs)
-- [XML schema reference](https://lpdf.io/schema/lpdf.xsd)
+- [lpdf.io/docs](https://lpdf.io/docs/)
+- [XML schema](https://lpdf.io/schema/lpdf.xsd)
 - [lpdfio/lpdf on Packagist](https://packagist.org/packages/lpdfio/lpdf)

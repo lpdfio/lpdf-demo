@@ -1,6 +1,6 @@
-# lpdf Java demo
+# Lpdf Java demo
 
-Minimal demo for the [io.lpdf:lpdf](https://central.sonatype.com/artifact/io.lpdf/lpdf) adapter — renders an XML document to a PDF file using the lpdf engine.
+A Java program that renders an XML document, or a document built in code, to a PDF file with [`io.lpdf:lpdf`](https://central.sonatype.com/artifact/io.lpdf/lpdf).
 
 ## Requirements
 
@@ -51,18 +51,12 @@ docker run --rm -v "./examples:/examples" lpdf-java-demo /examples/example3.xml 
 
 ## What it does
 
-1. Describes the document structure programmatically with the `L` builder, or using XML
-2. Passes the document structure to `PdfEngine.render()`
-3. Writes the resulting PDF bytes to the output path
+1. Builds the document in code with `L`, or reads it from an XML file
+2. Renders it with `engine.render()`
+3. Writes the PDF to the output path
 
-The engine is compiled to JVM classes inside the SDK's jar and runs on [Endive](https://github.com/bytecodealliance/endive), a WebAssembly runtime written in Java: no native code and nothing else to install.
+## Docs
 
-## License key
-
-No license key is set, which enables the free tier (output includes a watermark). Pass a valid key to `setLicenseKey()` to remove it.
-
-## Learn more
-
-- [lpdf documentation](https://lpdf.io/docs)
-- [XML schema reference](https://lpdf.io/schema/lpdf.xsd)
+- [lpdf.io/docs](https://lpdf.io/docs/)
+- [XML schema](https://lpdf.io/schema/lpdf.xsd)
 - [io.lpdf:lpdf on Maven Central](https://central.sonatype.com/artifact/io.lpdf/lpdf)
