@@ -28,7 +28,6 @@ const { L, NoAttr } = require('@lpdfio/lpdf');
   const args = process.argv.slice(2);
   const outputPath = args[1] ? resolve(args[1]) : (args[0] ? resolve(args[0]) : resolve(__dirname, '..', 'examples', 'output.pdf'));
 
-  // no key → free tier (watermark)
   const engine = L.engine();
 
   let bytes;
@@ -53,7 +52,6 @@ const { L, NoAttr } = require('@lpdfio/lpdf');
             L.column({ background: '#f0f4ff', padding: '16pt', gap: '6pt' }, [
               L.text({ bold: true }, ['Key facts']),
               L.text(NoAttr, ['• Engine: @lpdfio/lpdf (WASM / Node.js)']),
-              L.text(NoAttr, ['• License: free tier — watermark visible']),
               L.text(NoAttr, [`• Generated: ${now} UTC`]),
             ]),
 

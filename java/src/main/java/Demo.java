@@ -45,7 +45,6 @@ class Demo {
         }
         outputPath = outputPath.toAbsolutePath().normalize();
 
-        // no key → free tier (watermark)
         var engine = L.engine();
 
         byte[] pdf;
@@ -69,7 +68,6 @@ class Demo {
                             L.column(new ColumnAttr().background("#f0f4ff").padding("16pt").gap("6pt"), List.of(
                                 L.text(new TextAttr().bold(true), List.of("Key facts")),
                                 L.text(NoAttr, List.of("• Engine: io.lpdf:lpdf (WASM compiled to JVM classes / Endive)")),
-                                L.text(NoAttr, List.of("• License: free tier — watermark visible")),
                                 L.text(NoAttr, List.of("• Generated: " + generated + " UTC"))
                             )),
 
